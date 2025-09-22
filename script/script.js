@@ -38,38 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form submission and validation (for EmailJS)
-    const contactForm = document.getElementById('contact-form');
-
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // Simple validation
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        if (name === '' || email === '' || message === '') {
-            alert('Please fill out all fields.');
-            return false;
-        }
-
-        // --- EmailJS Integration ---
-        // Replace with your actual EmailJS Service ID, Template ID, and Public Key
-        const serviceID = 'YOUR_SERVICE_ID';
-        const templateID = 'YOUR_TEMPLATE_ID';
-        const publicKey = 'YOUR_PUBLIC_KEY'; 
-
-        // Send the email
-        emailjs.sendForm(serviceID, templateID, this, publicKey)
-            .then(() => {
-                alert('Message sent successfully!');
-                contactForm.reset();
-            }, (error) => {
-                console.log('FAILED...', error);
-                alert('Oops! Something went wrong. Please try again later.');
-            });
-    });
 
     // Keyboard accessibility for form submission
     contactForm.addEventListener('keypress', function(event) {
